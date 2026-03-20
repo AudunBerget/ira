@@ -1,0 +1,113 @@
+.song-card-header-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .-unfiltered {
+    justify-content: flex-end;
+  }
+}
+
+.song-card-header-col {
+  display: flex;
+  align-items: center;
+  vertical-align: baseline;
+}
+
+.song-sort-caret {
+  font-size: 2rem;
+  color: var(--ds-color-accent-background-default);
+}
+
+.song-controls {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 300px;
+
+  label {
+    color: var(--ds-color-accent-base-default);
+  }
+}
+
+.input-search-field {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  > input {
+    width: 100%;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border: 1px solid var(--ds-color-info-border-default);
+    border-radius: 0.2rem;
+  }
+}
+
+.song-searchbar-wrapper {
+  margin-bottom: 1rem;
+}
+
+.song-search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+  > button {
+    height: 2rem;
+    background-color: var(--ds-color-info-base-default);
+    color: var(--ds-color-accent-background-default);
+    border-color: var(--ds-color-info-border-subtle);
+    border-radius: 0.2rem;
+  }
+}
+
+.songs-played {
+  display: flex;
+  flex-direction: row-reverse;
+  color: var(--ds-color-info-base-default);
+}
+
+.song-reset-button {
+  color: var(--ds-color-info-base-default);
+  display: flex;
+  gap: 0.5rem;
+  svg {
+    font-size: 1.5rem;
+  }
+}
+
+.dropdown-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  label {
+    margin: 0;
+  }
+}
+
+.dropdown-wrapper {
+  display: block;
+  width: 100%;
+}
+
+.song-date-picker-to, .song-date-picker-from {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  input {
+    height: 2rem;
+  }
+}
+
+.active-items-per-page {
+  text-decoration: underline;
+}
+
+.song-pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

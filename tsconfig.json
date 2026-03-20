@@ -1,0 +1,13 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "types": [
+      "<ditt-tema>/types.d.ts", // inneholder typer for farger og størrelser i ditt tema (den du lager med @digdir/designsystemet)
+      "@digdir/designsystemet-react/react-types" // legger til typer på data-color og data-size på React JSX elementer
+    ]
+  }
+}

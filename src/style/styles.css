@@ -1,0 +1,58 @@
+body {
+  font-family: "Inter", sans-serif;
+  font-feature-settings: "cv05" 1; /* Enable lowercase l with tail */
+}
+
+.header-link {
+  text-decoration: none;
+  .active {
+    text-decoration: underline;
+  }
+}
+
+.header-link:hover {
+  text-decoration: underline;
+}
+
+/* Rename to generic iconbutton? */
+.sort-caret-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.sort-caret-label {
+  font-size: 1.25rem;
+}
+
+.search-bar-search-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  fill: var(--ds-color-accent-base-default);
+  color: var(--ds-color-accent-base-default);
+}
+
+.search-bar-clear-button {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  fill: var(--ds-color-accent-base-default);
+  color: var(--ds-color-accent-base-default);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ds-color-info-base-default);
+}
