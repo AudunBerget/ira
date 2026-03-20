@@ -2,7 +2,7 @@ import {useMemo} from "react";
 import {normalizeTheArtist} from "../../utils/StringUtils.ts";
 import {ResponsiveBar} from "@nivo/bar";
 import {color as d3Color} from "d3-color";
-import type {Track} from "../Stats.tsx";
+import type {Track} from "../../utils/XslxParser.ts";
 
 
 type BarChartProps = {
@@ -29,7 +29,7 @@ const BarChart = ({
       }
     >();
     data.forEach((row) => {
-      const raw = row.Artist ?? row["Artist"] ?? "Unknown";
+      const raw = row.artist ?? row["artist"] ?? "Unknown";
       const artist = normalizeTheArtist(String(raw).trim());
       const entry = map.get(artist);
       if (!entry) {
@@ -45,7 +45,7 @@ const BarChart = ({
   }, [data, topN])
 
   const uniqueArtists = useMemo(() => {
-    return new Set(data.map((track: Track) => track.Artist)).size
+    return new Set(data.map((track: Track) => track.artist)).size
   }, [data])
 
   const dynamicHeight = Math.max(height, (topN ? topN : uniqueArtists * 32) + 80)
