@@ -81,7 +81,9 @@ export async function parseSongs(
   fileName: string,
   sheetName: string,
 ): Promise<Track[]> {
-  const response = await fetch(fileName);
+
+  const uri = import.meta.env.BASE_URL + fileName;
+  const response = await fetch(uri);
   const arrayBuffer = await response.arrayBuffer();
 
   const workbook = XLSX.read(arrayBuffer, {

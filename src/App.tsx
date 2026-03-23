@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
    async function fetchTracks(): Promise<Track[]> {
-     return await parseSongs('/IRA-complete-feb-2026.xls', 'Komplett spilleliste');
+     return await parseSongs('IRAcomplete.xls', 'Komplett spilleliste');
   }
 
   fetchTracks().then((tracks: Track[]) => {
@@ -23,6 +23,7 @@ function App() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
 
   return (
     <Routes>
