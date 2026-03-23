@@ -84,7 +84,15 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
     {value: "alle", label: "Alle"},
     ...Array.from(new Set(data.map(d => d['owner'])))
       .filter(Boolean)
-      .sort((a, b) => a.localeCompare(b, "nb-NO"))
+      .sort((a, b) => {
+        const aIsGuest = a.endsWith('(gjest)')
+        const bIsGuest = b.endsWith('(gjest)')
+
+        if (aIsGuest && !bIsGuest) return 1;
+        if (!aIsGuest && bIsGuest) return -1;
+
+        return a.localeCompare(b, "nb-NO")
+      })
       .map(member => ({value: member, label: member}))
   ];
 
