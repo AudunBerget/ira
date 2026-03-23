@@ -1,7 +1,7 @@
-import {Divider, Heading, Link} from '@digdir/designsystemet-react';
+import {Divider, Heading, Link as DSLink} from '@digdir/designsystemet-react';
 import {SpeakerSoundWave3Icon, MenuHamburgerIcon, XMarkIcon} from '@navikt/aksel-icons';
 import styled from '@emotion/styled';
-import {Outlet, useLocation} from "react-router-dom";
+import {Outlet, useLocation, Link as RouterLink} from "react-router-dom";
 import {breakpoints} from "../utils/Variables.ts";
 import {type ReactNode, useRef, useState} from "react";
 import {useClickOutside} from "../hooks/useClickOutside.ts";
@@ -87,15 +87,23 @@ export const Header = () => {
     <>
       <ComponentHeaderWrapper>
         <ComponentHeaderItem>
-          <Link href="/">
-            <SpeakerSoundWave3Icon title='Ivrige Rockeres Avspillingslag' fontSize='4rem' />
-          </Link>
+          <DSLink asChild>
+            <RouterLink to={'/'}>
+              <SpeakerSoundWave3Icon title='Ivrige Rockeres Avspillingslag' fontSize='4rem' />
+            </RouterLink>
+          </DSLink>
             <Heading data-size='xl'>IRA</Heading>
         </ComponentHeaderItem>
         <ComponentDesktopHeaderItem className='header-desktop'>
-          <Link className={activeLink('/moter')} href='/moter'>Møter</Link>
-          <Link className={activeLink('/spor')} href='/spor'>Spor</Link>
-          <Link className={activeLink('/stats')} href='/stats'>Statistikk</Link>
+          <DSLink asChild>
+            <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
+          </DSLink>
+          <DSLink asChild>
+            <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
+          </DSLink>
+          <DSLink asChild>
+            <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>
+          </DSLink>
         </ComponentDesktopHeaderItem>
         <ComponentMobileMenuWrapper>
           <button
@@ -110,9 +118,15 @@ export const Header = () => {
       <Divider />
       {isMenuOpen &&
         <Popup onClose={() => setIsMenuOpen(false)}>
-          <Link className={activeLink('/moter')} href='/moter'>Møter</Link>
-          <Link className={activeLink('/spor')} href='/spor'>Spor</Link>
-          <Link className={activeLink('/stats')} href='/stats'>Statistikk</Link>
+          <DSLink asChild>
+            <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
+          </DSLink>
+          <DSLink asChild>
+            <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
+          </DSLink>
+          <DSLink asChild>
+            <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>
+          </DSLink>
         </Popup>
       }
       <main>
