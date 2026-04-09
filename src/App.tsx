@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
 import Songs from "./pages/Songs.tsx";
 import {parseSongs, type Track} from "./utils/XslxParser.ts";
+import Meets from "./pages/Meets.tsx";
 
 function App() {
   const [tracks, setTracks] = useState<Track[]>([]);
@@ -28,9 +29,8 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Header />}>
-        {/*<Route index path='/' />*/}
         <Route path='omoss' />
-        <Route path='moter' />
+        <Route path='moter' element={<Meets tracks={tracks} />} />
         <Route path='spor' element={<Songs data={tracks} />} />
         <Route path='stats' element={<Stats data={tracks} topN={20} />} />
       </Route>

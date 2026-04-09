@@ -36,7 +36,7 @@ const ComponentSongControlMobile = styled('div') ({
   flexDirection: 'column',
   gap: '1rem',
   label: {
-    color: 'var(--ds-color-accent-base-default)',
+    color: 'var(--ira-red-color)',
   }
 })
 
@@ -48,7 +48,7 @@ const ComponentSongControlDesktop = styled('div') ({
   width: '350px',
   flexDirection: 'column',
   label: {
-    color: 'var(--ds-color-accent-base-default)',
+    color: 'var(--ira-red-color)',
   }
 })
 
@@ -56,7 +56,7 @@ const ComponentAccordionToggle = styled('div') ({
   [breakpoints.minWid768]: {
     display: 'none',
   },
-  color: 'var(--ds-color-accent-base-default)',
+  color: 'var(--ira-red-color)',
   fontSize: '2rem',
   justifyContent: 'space-between',
   display: 'flex'
@@ -96,7 +96,7 @@ const ComponentAccordionClose = styled('div') ({
   height: 'fit-content',
   fontSize: '2rem',
   alignSelf: 'center',
-  color: 'var(--ds-color-info-base-default)',
+  color: 'var(--ira-red-color)',
 })
 
 const SongControlAccordionClose = ({
@@ -144,12 +144,12 @@ export const ComponentSongCardHeader = styled('div') ({
   display: 'none',
   padding: '0.5rem',
   gridTemplateColumns: '0.3fr 1fr 1fr 0.3fr',
-  borderTop: '1px solid var(--ds-color-info-border-subtle)',
-  borderBottom: '1px solid var(--ds-color-info-border-subtle)',
+  borderTop: '1px solid var(--ira-red-color)',
+  borderBottom: '1px solid var(--ira-red-color)',
   borderTopLeftRadius: '0.5rem',
   borderTopRightRadius: '0.5rem',
   fontWeight: 'bold',
-  backgroundColor: 'var(--ds-color-info-base-default)',
+  backgroundColor: 'var(--ira-red-color)',
   color: 'var(--ds-color-accent-background-default)',
 })
 

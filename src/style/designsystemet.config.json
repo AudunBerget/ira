@@ -2,14 +2,13 @@
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "outDir": "./design-tokens",
   "themes": {
-    "ira": {
+    "iratheme": {
       "colors": {
         "main": {
-          "accent": "#c31c05"
+          "accent": "#b4160d"
         },
         "support": {
-          "brand1": "#cd9813",
-          "brand2": "#3f7fa0"
+          "brand1": "#d1be38"
         },
         "neutral": "#24272B"
       },

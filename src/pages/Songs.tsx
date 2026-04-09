@@ -171,6 +171,9 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
 
   // todo remember filters/søk when navigating away and back?
   // todo set number of hits per page
+  // todo make search/filter header static such that only songs get scrolled?
+  // todo style multiselect and datepicker (border, outline, focus..)
+  // todo style pagination
 
   function toggleSort(attribute: keyof Track) {
     console.log(attribute);

@@ -71,18 +71,19 @@ export default function MultiSelector({
   const customStyles: StylesConfig<SelectorItem, true> = {
     multiValue: (base) => ({
       ...base,
-      backgroundColor: 'var(--ds-color-info-border-subtle)',
+      backgroundColor: 'var(--ira-red-color-500)',
+      color: 'var(--ira-red-color)',
+      outline: '2x solid var(--ira-red-color)',
     }),
     multiValueLabel: (base) => ({
       ...base,
-      color: 'var(--ds-color-info-text-default)',
+      color: 'var(--ira-red-color)',
     }),
     multiValueRemove: (base) => ({
       ...base,
       ':hover': {
-        backgroundColor: 'var(--ds-color-info-base-default)',
-        color: 'var(--ds-color-accent-background-default)',
-
+        backgroundColor: 'var(--ira-red-color)',
+        color: 'var(--ira-red-color-500)',
       }
     })
   }

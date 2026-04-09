@@ -1,5 +1,5 @@
 import {Pagination, usePagination} from "@digdir/designsystemet-react";
-import type {PaginationProps} from "./IraPagination.tsx";
+import {type PaginationProps, StyledPagination} from "./IraPagination.tsx";
 
 
 const IraPaginationMobile = ({
@@ -16,10 +16,10 @@ const IraPaginationMobile = ({
   });
 
   return (
-    <Pagination aria-label='Navigering sangside'>
+    <StyledPagination aria-label='Navigering sangside'>
       <div style={{
         textAlign: 'center',
-        color: 'var(--ds-color-text-subtle)',
+        color: 'var(--ira-red-color)',
       }}>
         {`${currentSetPage} / ${totalPages}`}
       </div>
@@ -43,7 +43,7 @@ const IraPaginationMobile = ({
           </Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
-    </Pagination>
+    </StyledPagination>
   )
 }
 

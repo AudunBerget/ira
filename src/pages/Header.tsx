@@ -1,19 +1,21 @@
-import {Divider, Heading, Link as DSLink} from '@digdir/designsystemet-react';
-import {SpeakerSoundWave3Icon, MenuHamburgerIcon, XMarkIcon} from '@navikt/aksel-icons';
+import {Divider, Link as DSLink} from '@digdir/designsystemet-react';
+import {MenuHamburgerIcon, XMarkIcon} from '@navikt/aksel-icons';
 import styled from '@emotion/styled';
 import {Outlet, useLocation, Link as RouterLink} from "react-router-dom";
 import {breakpoints} from "../utils/Variables.ts";
 import {type ReactNode, useRef, useState} from "react";
 import {useClickOutside} from "../hooks/useClickOutside.ts";
+import iraLogo from "@/assets/iralogonotext.jpg"
 
 const ComponentHeaderWrapper = styled('header')(() => ({
   display: 'flex',
-  color: 'var(--ds-color-info-base-default)',
+  color: 'var(--ira-red-color)',
 }))
 
 const ComponentDesktopHeaderItem = styled('div')(() => ({
   [breakpoints.minWid768]: {
     display: 'flex',
+    alignItems: 'center',
   },
   display: 'none',
   gap: '1rem',
@@ -42,7 +44,7 @@ const ComponentMobileMenuWrapper = styled('div')({
 
   button: {
     fontSize: '3rem',
-    color: 'var(--ds-color-info-base-default)',
+    color: 'var(--ira-red-color)',
   }
 })
 
@@ -62,13 +64,22 @@ const ComponentMobileMenu = styled('div')({
   fontSize: '2rem',
 })
 
+const ComponentHeaderLogo = styled('img')({
+  [breakpoints.minWid768]: {
+    width: '200px',
+  },
+
+  width: '100px',
+  height: 'auto',
+})
+
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const location = useLocation();
   const activeLink = (path: string) => {
-    return location.pathname === path ? 'header-link.active' : 'header-link';
+    return location.pathname === path ? 'header-link-active' : 'header-link';
   }
 
   type PopUpProps = {
@@ -87,23 +98,12 @@ export const Header = () => {
     <>
       <ComponentHeaderWrapper>
         <ComponentHeaderItem>
-          <DSLink asChild>
-            <RouterLink to={'/'}>
-              <SpeakerSoundWave3Icon title='Ivrige Rockeres Avspillingslag' fontSize='4rem' />
-            </RouterLink>
-          </DSLink>
-            <Heading data-size='xl'>IRA</Heading>
+          <ComponentHeaderLogo src={iraLogo} alt='IRA Logo' />
         </ComponentHeaderItem>
         <ComponentDesktopHeaderItem className='header-desktop'>
-          <DSLink asChild>
-            <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
-          </DSLink>
-          <DSLink asChild>
-            <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
-          </DSLink>
-          <DSLink asChild>
-            <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>
-          </DSLink>
+          <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
+          <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
+          <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>
         </ComponentDesktopHeaderItem>
         <ComponentMobileMenuWrapper>
           <button
@@ -118,13 +118,13 @@ export const Header = () => {
       <Divider />
       {isMenuOpen &&
         <Popup onClose={() => setIsMenuOpen(false)}>
-          <DSLink asChild>
+          <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
             <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
           </DSLink>
-          <DSLink asChild>
+          <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
             <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
           </DSLink>
-          <DSLink asChild>
+          <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
             <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>
           </DSLink>
         </Popup>

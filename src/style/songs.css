@@ -22,10 +22,6 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 300px;
-
-  label {
-    color: var(--ds-color-accent-base-default);
-  }
 }
 
 .input-search-field {
@@ -36,8 +32,12 @@
   > input {
     width: 100%;
     padding: 0.5rem 2rem 0.5rem 2rem;
-    border: 1px solid var(--ds-color-info-border-default);
+    border: 1px solid var(--ira-red-color);
     border-radius: 0.2rem;
+  }
+
+  > input:focus {
+    outline: 2px solid var(--ira-red-color);
   }
 }
 
@@ -52,9 +52,9 @@
   width: 100%;
   > button {
     height: 2rem;
-    background-color: var(--ds-color-info-base-default);
+    background-color: var(--ira-red-color);
     color: var(--ds-color-accent-background-default);
-    border-color: var(--ds-color-info-border-subtle);
+    border-color: var(--ira-red-color);
     border-radius: 0.2rem;
   }
 }
@@ -62,11 +62,11 @@
 .songs-played {
   display: flex;
   flex-direction: row-reverse;
-  color: var(--ds-color-info-base-default);
+  color: var(--ira-red-color);
 }
 
 .song-reset-button {
-  color: var(--ds-color-info-base-default);
+  color: var(--ira-red-color);
   display: flex;
   gap: 0.5rem;
   svg {

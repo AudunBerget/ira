@@ -14,12 +14,8 @@ const ComponentSongCard = styled('div') ({
     padding: '0.5rem',
     gridTemplateColumns: '0.3fr 1fr 1fr 0.3fr',
     gridTemplateRows: '1fr',
-    borderTop: '1px solid var(--ds-color-info-border-subtle)',
-    borderBottom: '1px solid var(--ds-color-info-border-subtle)',
-    borderLeft: '1px solid var(--ds-color-info-base-default)',
-    borderRight: '1px solid var(--ds-color-info-base-default)',
-    ':nth-of-type(odd)': {
-      backgroundColor: 'color-mix(in srgb, var(--ds-color-info-base-default) 20%, transparent)',
+    ':nth-of-type(even)': {
+      backgroundColor: 'color-mix(in srgb, var(--ira-red-color-800), transparent)',
     },
     marginBottom: '0',
   },
@@ -27,7 +23,7 @@ const ComponentSongCard = styled('div') ({
   gridTemplateColumns: '1fr 1fr 1fr',
   gridTemplateRows: '1fr 1fr 1fr',
   marginBottom: '0.5rem',
-  border: '1px solid var(--ds-color-info-border-subtle)',
+  border: '1px solid var(--ira-red-color)',
 })
 
 const ComponentSongCardDate = styled('div') ({
@@ -37,7 +33,7 @@ const ComponentSongCardDate = styled('div') ({
     padding: '0',
   },
   [breakpoints.maxWid767]: {
-    backgroundColor: 'var(--ds-color-info-base-default)',
+    backgroundColor: 'var(--ira-red-color)',
     color: 'var(--ds-color-accent-background-default)',
     textAlign: 'right',
   },
@@ -56,7 +52,7 @@ const ComponentSongCardArtist = styled('div') ({
     fontWeight: 'normal',
   },
   [breakpoints.maxWid767]: {
-    backgroundColor: 'var(--ds-color-info-base-default)',
+    backgroundColor: 'var(--ira-red-color)',
     color: 'var(--ds-color-accent-background-default)',
   },
   gridColumnStart: '1',
