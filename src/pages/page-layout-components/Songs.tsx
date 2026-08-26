@@ -25,7 +25,11 @@ export const SongLayout = ({children}: ChildOnlyProps) => {
   )}
 
 const ComponentSongControlLayout = styled('div') ({
-
+  border: '1px solid var(--border)',
+  borderRadius: '1rem',
+  padding: '1rem',
+  backgroundColor: 'var(--surface-white)',
+  height: 'fit-content',
 })
 
 const ComponentSongControlMobile = styled('div') ({
@@ -36,7 +40,7 @@ const ComponentSongControlMobile = styled('div') ({
   flexDirection: 'column',
   gap: '1rem',
   label: {
-    color: 'var(--ira-red-color)',
+    color: 'var(--muted-grey)',
   }
 })
 
@@ -45,10 +49,10 @@ const ComponentSongControlDesktop = styled('div') ({
     display: 'flex',
   },
   display: 'none',
-  width: '350px',
+  width: '250px',
   flexDirection: 'column',
   label: {
-    color: 'var(--ira-red-color)',
+    color: 'var(--muted-grey)',
   }
 })
 
@@ -172,7 +176,6 @@ export const ComponentSongCardDetailsWrapper = styled('div') ({
   position: 'sticky',
   top: 0,
   zIndex: 1,
-  backgroundColor: 'var(--ds-color-info-background-default)',
 })
 
 export const ComponentSongPaginationWrapper = styled('div') ({

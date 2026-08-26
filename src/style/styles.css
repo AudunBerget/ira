@@ -16,24 +16,44 @@
   --ira-red-color-200: #fce0df;
   --ira-red-color-100: #fef3f3;
 
+  --surface-grey: #f4f5fb;
+  --surface-white: #ffffff;
+  --text-dark: #1a1d2e;
+  --muted-grey: #7b82a0;
+  --border: #dde0ef;
 }
 
 body {
   font-family: "Inter", sans-serif;
   font-feature-settings: "cv05" 1; /* Enable lowercase l with tail */
+  background-color: var(--surface-grey);
+  margin: 0;
 }
 
-.header-link {
+main {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.header-link, .header-link-active {
   text-decoration: none;
-  color: var(--ira-red-color);
+  color: var(--muted-grey);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.40rem;
 }
 
 .header-link-active {
+  text-decoration: none;
   color: var(--ira-red-color);
+  background-color: var(--ira-red-color-200);
+  border-radius: 0.40rem;
 }
 
 .header-link:hover {
-  text-decoration: underline;
+  color: var(--text-dark);
+  background-color: var(--surface-grey);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
 }
 
 /* Rename to generic iconbutton? */
@@ -57,8 +77,8 @@ body {
   transform: translateY(-50%);
   width: 1rem;
   height: 1rem;
-  fill: var(--ira-red-color);
-  color: var(--ira-red-color);
+  fill: var(--muted-grey);
+  color: var(--muted-grey);
 }
 
 .search-bar-clear-button {
@@ -68,8 +88,8 @@ body {
   transform: translateY(-50%);
   width: 1rem;
   height: 1rem;
-  fill: var(--ira-red-color);
-  color: var(--ira-red-color);
+  fill: var(--muted-grey);
+  color: var(--muted-grey);
   background: transparent;
   border: none;
   cursor: pointer;

@@ -1,15 +1,17 @@
-import {Divider, Link as DSLink} from '@digdir/designsystemet-react';
+import {Link as DSLink} from '@digdir/designsystemet-react';
 import {MenuHamburgerIcon, XMarkIcon} from '@navikt/aksel-icons';
 import styled from '@emotion/styled';
 import {Outlet, useLocation, Link as RouterLink} from "react-router-dom";
 import {breakpoints} from "../utils/Variables.ts";
 import {type ReactNode, useRef, useState} from "react";
 import {useClickOutside} from "../hooks/useClickOutside.ts";
-import iraLogo from "@/assets/iralogonotext.jpg"
+import iraLogo from "@/assets/iralogocrop.png"
 
 const ComponentHeaderWrapper = styled('header')(() => ({
   display: 'flex',
   color: 'var(--ira-red-color)',
+  backgroundColor: '#FFFFFF',
+  borderBottom: '1px solid var(--border)',
 }))
 
 const ComponentDesktopHeaderItem = styled('div')(() => ({
@@ -18,10 +20,8 @@ const ComponentDesktopHeaderItem = styled('div')(() => ({
     alignItems: 'center',
   },
   display: 'none',
-  gap: '1rem',
-  padding: '1rem',
-  fontSize: 'var(--ds-heading-lg-font-size)',
-  justifyContent: 'center',
+  gap: '0.5rem',
+  fontSize: '1rem',
   flex: 1,
 }))
 
@@ -30,6 +30,12 @@ const ComponentHeaderItem = styled('div')({
   fontSize: 'var(--ds-heading-lg-font-size)',
   gap: '1rem',
   padding: '1rem',
+
+  '& img': {
+    width: '8rem',
+    height: 'auto',
+    objectFit: 'contain',
+  }
 })
 
 const ComponentMobileMenuWrapper = styled('div')({
@@ -101,8 +107,8 @@ export const Header = () => {
           <ComponentHeaderLogo src={iraLogo} alt='IRA Logo' />
         </ComponentHeaderItem>
         <ComponentDesktopHeaderItem className='header-desktop'>
-          <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
           <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
+          <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
           <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>
         </ComponentDesktopHeaderItem>
         <ComponentMobileMenuWrapper>
@@ -115,14 +121,13 @@ export const Header = () => {
         </ComponentMobileMenuWrapper>
       {/* todo Lightmode / darkmode? */}
       </ComponentHeaderWrapper>
-      <Divider />
       {isMenuOpen &&
         <Popup onClose={() => setIsMenuOpen(false)}>
           <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
-            <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
+            <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
           </DSLink>
           <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
-            <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
+            <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
           </DSLink>
           <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
             <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>

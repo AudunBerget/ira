@@ -32,12 +32,13 @@
   > input {
     width: 100%;
     padding: 0.5rem 2rem 0.5rem 2rem;
-    border: 1px solid var(--ira-red-color);
+    border: 1px solid var(--border);
     border-radius: 0.2rem;
+    background-color: var(--surface-grey);
   }
 
   > input:focus {
-    outline: 2px solid var(--ira-red-color);
+    outline: 2px solid var(--muted-grey);
   }
 }
 
@@ -98,6 +99,10 @@
 
   input {
     height: 2rem;
+    border: 1px solid var(--border);
+    background-color: var(--surface-grey);
+    border-radius: 0.2rem;
+    font-family: 'Inter', sans-serif;
   }
 }
 
@@ -111,3 +116,83 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+/* ── Member multi-select dropdown ───────────────────── */
+.member-select { position: relative; width: 100%; }
+
+.member-select-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-grey);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: var(--text-dark);
+  text-align: left;
+  transition: border-color 0.15s;
+}
+
+.member-select-trigger:hover { border-color: var(--muted-grey); }
+
+.member-select-trigger.has-selection {
+  border-color: var(--text-dark);
+  color: var(--text-dark);
+}
+
+.member-select-arrow { font-size: 9px; color: var(--muted-grey); flex-shrink: 0; }
+
+.member-select-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--surface-grey);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px;
+  z-index: 200;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.member-select-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  user-select: none;
+}
+
+.member-select-option:hover { background: var(--surface-grey); }
+
+.member-select-option input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  accent-color: var(--ira-red-color);
+  flex-shrink: 0;
+}
+
+.member-select-clear {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 6px;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--border);
+  color: var(--muted-grey);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.15s;
+}
+
+.member-select-clear:hover { color: var(--text-dark); }

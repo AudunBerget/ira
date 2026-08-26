@@ -1,5 +1,6 @@
 import type {Track} from "../utils/XslxParser.ts";
 import {groupBy} from "../utils/ArrayUtils.ts";
+import MeetCard from "./page-components/MeetCard.tsx";
 
 type MeetsProps = {
   tracks: Track[],
@@ -7,14 +8,15 @@ type MeetsProps = {
 
 const Meets = ({ tracks }: MeetsProps) => {
 
-
-  const groupedByDate = groupBy(tracks, "date")
-  console.log(groupedByDate);
+  const tracksSortedByDateAsc = tracks.sort((a, b) => a.date.getTime() - b.date.getTime());
+  const groupedByDate = groupBy(tracksSortedByDateAsc, "date", 'YY-MM-DD')
 
   return (
     <div>
-      <div>Heyababes</div>
-      <div>{Object.entries(groupedByDate).length} møter</div>
+      <h2>{Object.entries(groupedByDate).length} møter</h2>
+      {Object.entries(groupedByDate).map(([date, songs], index) =>
+        <MeetCard key={`${date}-${index}`} meetingId={index + 1} date={date} songs={songs} />
+      )}
     </div>
   )
 }

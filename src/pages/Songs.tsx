@@ -1,6 +1,5 @@
 import SongCard from "./page-components/SongCard.tsx";
 import {useMemo, useState} from "react";
-import MultiSelector from "./page-components/MultiSelector.tsx";
 import SearchBar from "./page-components/SearchBar.tsx";
 import DatePicker from "./page-components/DatePicker.tsx";
 import {getMinMaxDate, startOfDayMs} from "../utils/DateUtils.ts";
@@ -13,13 +12,15 @@ import {ArrowCirclepathReverseIcon} from "@navikt/aksel-icons";
 import {
   ComponentSongCardDetailsWrapper,
   ComponentSongCardHeader,
-  ComponentSongCardWrapper, ComponentSongPaginationWrapper,
+  ComponentSongCardWrapper,
+  ComponentSongPaginationWrapper,
   SongControlLayout,
   SongLayout
 } from "./page-layout-components/Songs.tsx";
 import useIsMobileScreen from "../hooks/useIsMobileScreen.ts";
 import IraPaginationMobile from "./page-components/IraPaginationMobile.tsx";
 import type {Track, TrackKey} from "../utils/XslxParser.ts";
+import MultiSelect from "./page-components/MultiSelect.tsx";
 
 type SongProps = {
   data: Track[];
@@ -36,7 +37,7 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
   const initialState = {
     artistQuery: '',
     titleQuery: '',
-    selectedMembers: ['alle'],
+    selectedMembers: [],
     currentPage: 1,
     songSort: {attribute: 'date', order: SortOrder.ASC} as SongSort,
     dateFrom: getMinMaxDate(data).min,
@@ -81,7 +82,6 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
 
 
   const memberOptions = [
-    {value: "alle", label: "Alle"},
     ...Array.from(new Set(data.map(d => d['owner'])))
       .filter(Boolean)
       .sort((a, b) => {
@@ -93,7 +93,6 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
 
         return a.localeCompare(b, "nb-NO")
       })
-      .map(member => ({value: member, label: member}))
   ];
 
   const minMaxDates = getMinMaxDate(data);
@@ -173,10 +172,8 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
   // todo set number of hits per page
   // todo make search/filter header static such that only songs get scrolled?
   // todo style multiselect and datepicker (border, outline, focus..)
-  // todo style pagination
 
   function toggleSort(attribute: keyof Track) {
-    console.log(attribute);
     if (songSort.attribute === attribute) {
       setSongSort({attribute, order: songSort.order === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC});
     } else {
@@ -234,9 +231,14 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
         </div>
         <div className='dropdown-form'>
           <label>Spilt av</label>
-          <MultiSelector
-            options={memberOptions}
-            value={selectedMembers}
+          {/*<MultiSelector*/}
+          {/*  options={memberOptions}*/}
+          {/*  value={selectedMembers}*/}
+          {/*  onChange={(values) => setSelectedMembers(values)}*/}
+          {/*/>*/}
+          <MultiSelect
+            members={memberOptions}
+            selected={selectedMembers}
             onChange={(values) => setSelectedMembers(values)}
           />
         </div>
