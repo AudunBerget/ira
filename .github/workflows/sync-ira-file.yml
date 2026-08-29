@@ -30,7 +30,7 @@ jobs:
         id: sync
         env:
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
-          TARGET_PATH: data/IRAComplete.xls
+          TARGET_PATH: public/IRAComplete.xls
           EXPECTED_FILENAME: IRAComplete.xls
         run: python scripts/validate_and_sync.py
 
