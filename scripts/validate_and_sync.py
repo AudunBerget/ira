@@ -20,7 +20,7 @@ from googleapiclient.http import MediaIoBaseDownload
 # ---- Configuration -----------------------------------------------------
 
 FOLDER_ID = os.environ["GDRIVE_FOLDER_ID"]
-TARGET_PATH = os.environ.get("TARGET_PATH", "data/IRAComplete.xls")
+TARGET_PATH = os.environ.get("TARGET_PATH", "public/IRAComplete.xls")
 SA_KEY_PATH = "sa_key.json"
 
 MIN_SIZE_BYTES = 5_000        # reject if suspiciously small (near-empty file)
