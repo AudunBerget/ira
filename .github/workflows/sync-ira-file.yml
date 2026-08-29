@@ -1,7 +1,8 @@
 name: Sync IRAComplete.xls from Google Drive
+
 on:
   schedule:
-    - cron: '0 6 10 * *'   # 6am UTC on the 1st of every month
+    - cron: '0 6 10 * *'  # 6am UTC on the 10th of every month
   workflow_dispatch:        # allows manual trigger from the Actions tab
 
 permissions:
@@ -20,7 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install google-auth google-api-python-client pandas xlrd
+        run: pip install google-auth google-api-python-client
 
       - name: Write service account credentials to disk
         run: echo '${{ secrets.GDRIVE_SA_KEY }}' > sa_key.json
