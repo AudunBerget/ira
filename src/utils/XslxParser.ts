@@ -26,10 +26,11 @@ function parseExcelDate(value: unknown): Date | null {
   if (typeof value === "string") {
     const trimmed = value.trim();
 
-    // Match D/M/YY, DD/MM/YYYY, etc.
+    // Match DD/MM/YY, DD/MM/YYYY, etc.
     const match = trimmed.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/);
     if (match) {
-      const [, monthStr, dayStr, yearStr] = match;
+      // const [, monthStr, dayStr, yearStr] = match;
+      const [, dayStr, monthStr, yearStr] = match;
       const day = Number(dayStr);
       const month = Number(monthStr);
       const year =
