@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     async function fetchTracks(): Promise<Track[]> {
-      return await parseSongs('iracomplete.xls', 'Komplett spilleliste');
+      return await parseSongs('iracomplete.xls', 'Komplett spilleliste', 'Dato-møtearr.');
     }
 
     fetchTracks().then((tracks: Track[]) => {
