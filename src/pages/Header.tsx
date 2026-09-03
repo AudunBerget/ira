@@ -107,7 +107,7 @@ export const Header = () => {
         </ComponentHeaderItem>
         <ComponentDesktopHeaderItem className="header-desktop">
           <RouterLink className={activeLink("/")} to="/">
-            Statistikk
+            Oversikt
           </RouterLink>
           <RouterLink className={activeLink("/spor")} to="/spor">
             Spor
@@ -137,7 +137,7 @@ export const Header = () => {
             }}
           >
             <RouterLink className={activeLink("")} to="/">
-              Statistikk
+              Oversikt
             </RouterLink>
           </DSLink>
           <DSLink
