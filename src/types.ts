@@ -1,7 +1,7 @@
 export type Track = {
   date: Date;
   artist: string;
-  artist_raw: string;
+  artistRaw: string;
   title: string;
   owner: string;
   comment?: string | null;

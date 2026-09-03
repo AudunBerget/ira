@@ -40,12 +40,17 @@ const Stats = ({ data }: StatsProps) => {
   const yearsActive = (lastMeetYear - firstMeetYear) + 1;
 
   function songsByArtist(tracks: Track[]): { artist: string; totalSongs: number }[] {
-    const counts = new Map<string, number>()
+    const counts = new Map<string, { display: string; count: number }>()
     for (const track of tracks) {
-      counts.set(track.artist, (counts.get(track.artist) ?? 0) + 1)
+      const entry = counts.get(track.artistRaw)
+      if (entry) {
+        entry.count++
+      } else {
+        counts.set(track.artistRaw, { display: track.artist, count: 1 })
+      }
     }
-    return [...counts.entries()]
-      .map(([artist, totalSongs]) => ({ artist, totalSongs }))
+    return [...counts.values()]
+      .map(({ display, count }) => ({ artist: display, totalSongs: count }))
       .sort((a, b) => b.totalSongs - a.totalSongs)
       .filter(o => o.totalSongs > 15)
   }
