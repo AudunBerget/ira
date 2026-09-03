@@ -10,7 +10,7 @@ import iraLogo from "@/assets/iralogocrop.png";
 const ComponentHeaderWrapper = styled("header")(() => ({
   display: "flex",
   color: "var(--ira-red-color)",
-  backgroundColor: "#FFFFFF",
+  backgroundColor: "var(--surface-white)",
   borderBottom: "1px solid var(--border)",
 }));
 

@@ -41,6 +41,14 @@ export function getMinMaxDate(tracks: Track[]): MinMaxDate {
   };
 }
 
+// Formats a Date as zero-padded "DD/MM/YYYY" for consistent string comparison
+export function formatDateKey(date: Date, divider = '/'): string {
+  const d = String(date.getDate()).padStart(2, '0');
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const y = String(date.getFullYear());
+  return `${d}${divider}${m}${divider}${y}`;
+}
+
 function toLocalDate(
   dateLike: Date | string | number | undefined,
 ): Date | undefined {

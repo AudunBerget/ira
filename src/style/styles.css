@@ -1,6 +1,15 @@
 :root {
   /* base */
-  --ira-red-color: #b4160d;
+  --ira-red-color:      #b4160d;
+  --ira-orange-color:   #c4560c;
+  --ira-amber-color:    #b88c00;
+  --ira-olive-color:    #6b8c00;
+  --ira-green-color:    #0f7a3c;
+  --ira-teal-color:     #077a70;
+  --ira-blue-color:     #0c54a0;
+  --ira-indigo-color:   #3618a0;
+  --ira-purple-color:   #780c98;
+  --ira-magenta-color:  #a80e60;
 
   /* darker */
   --ira-red-color-1100: #5e0b07;
