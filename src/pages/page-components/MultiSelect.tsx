@@ -47,7 +47,7 @@ export default function MultiSelect({
       ? "Alle"
       : selected.length === 1
         ? selected[0]
-        : `${selected.length} spillere valgt`;
+        : selected.sort((a,b) => a.localeCompare(b)).join(', ').trim();
 
   return (
     <div className="member-select" ref={ref}>
