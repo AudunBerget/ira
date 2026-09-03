@@ -1,8 +1,8 @@
-name: Sync IRAComplete.xls from Google Drive
+name: Sync iracomplete.xls from Google Drive
 
 on:
   schedule:
-    - cron: "0 6 5,10,15,20,25 * *" # 6am UTC on the 10th of every month
+    - cron: "0 6 */5 * *" # 6am UTC on the 10th of every month
   workflow_dispatch: # allows manual trigger from the Actions tab
 
 permissions:
@@ -30,8 +30,8 @@ jobs:
         id: sync
         env:
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
-          TARGET_PATH: public/IRAComplete.xls
-          EXPECTED_FILENAME: IRAComplete.xls
+          TARGET_PATH: public/iracomplete.xls
+          EXPECTED_FILENAME: iracomplete.xls
         run: python scripts/validate_and_sync.py
 
       - name: Clean up credentials

@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+.next
+public
+*.xlsx
+*.xls
+*.xml
+*.html
+public/

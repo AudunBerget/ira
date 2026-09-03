@@ -2,7 +2,7 @@ import { formatDate } from "../../utils/DateUtils.ts";
 import { normalizeTheArtist } from "../../utils/StringUtils.ts";
 import styled from "@emotion/styled";
 import { breakpoints } from "../../utils/Variables.ts";
-import type { Track } from "../../utils/XslxParser.ts";
+import type { Track } from '../../types.ts';
 
 type SongCardProps = {
   song: Track;

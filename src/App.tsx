@@ -1,11 +1,11 @@
-import { Header } from "./pages/Header.tsx";
-import Stats from "./pages/Stats.tsx";
-import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import Songs from "./pages/Songs.tsx";
-import { parseSongs } from "./utils/XslxParser.ts";
-import Meets from "./pages/Meets.tsx";
-import type { Track } from "./types.ts";
+import { Header } from './pages/Header.tsx';
+import Stats from './pages/Stats.tsx';
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Songs from './pages/Songs.tsx';
+import { parseSongs } from './utils/XslxParser.ts';
+import Meets from './pages/Meets.tsx';
+import type { Track } from './types.ts';
 
 function App() {
   const [tracks, setTracks] = useState<Track[]>([]);
@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     async function fetchTracks(): Promise<Track[]> {
-      return await parseSongs("IRAcomplete.xls", "Komplett spilleliste");
+      return await parseSongs('iracomplete.xls', 'Komplett spilleliste');
     }
 
     fetchTracks().then((tracks: Track[]) => {
@@ -29,7 +29,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Header />}>
-        <Route path={""} element={<Stats data={tracks} topN={20} />} />
+        <Route path={''} element={<Stats data={tracks} topN={20} />} />
         <Route path="omoss" />
         <Route path="moter" element={<Meets tracks={tracks} />} />
         <Route path="spor" element={<Songs data={tracks} />} />
