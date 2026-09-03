@@ -1,8 +1,8 @@
-import type { Track } from "./XslxParser.ts";
+import type { Track } from "../types.ts";
 
 export function formatDate(
   date: Date | string | number | undefined,
-  format: string = "DD-MM-YY"
+  format: string = "DD-MM-YY",
 ) {
   if (!date) return "";
 
@@ -23,22 +23,27 @@ export function formatDate(
 export type MinMaxDate = {
   min: string;
   max: string;
-}
+};
 
 export function getMinMaxDate(tracks: Track[]): MinMaxDate {
   if (tracks.length === 0) {
-    return { min: '', max: '' }
+    return { min: "", max: "" };
   }
 
-  const dates = tracks.map((track: Track) => track.date)
-  const minDate = Math.min(...dates.map(date => date.getTime()));
-  const maxDate = Math.max(...dates.map(date => date.getTime()));
+  const dates = tracks.map((track: Track) => track.date);
+  const minDate = Math.min(...dates.map((date) => date.getTime()));
+  const maxDate = Math.max(...dates.map((date) => date.getTime()));
 
   const dateFormat = "YYYY-MM-DD";
-  return { min: formatDate(minDate, dateFormat), max: formatDate(maxDate, dateFormat) }
+  return {
+    min: formatDate(minDate, dateFormat),
+    max: formatDate(maxDate, dateFormat),
+  };
 }
 
-function toLocalDate(dateLike: Date | string | number | undefined): Date | undefined {
+function toLocalDate(
+  dateLike: Date | string | number | undefined,
+): Date | undefined {
   if (dateLike === undefined || dateLike === null) return undefined;
   if (dateLike instanceof Date) return new Date(dateLike.getTime());
   if (typeof dateLike === "number") return new Date(dateLike);
@@ -46,31 +51,34 @@ function toLocalDate(dateLike: Date | string | number | undefined): Date | undef
   const isoDateOnly = /^(\d{4})-(\d{2})-(\d{2})$/;
   const m = String(dateLike).trim().match(isoDateOnly);
   if (m) {
-    const y = Number(m[1]), mo = Number(m[2]) - 1, day = Number(m[3]);
+    const y = Number(m[1]),
+      mo = Number(m[2]) - 1,
+      day = Number(m[3]);
     return new Date(y, mo, day);
   }
 
   return new Date(String(dateLike));
 }
 
-export function startOfDayMs(dateLike: Date | string | number | undefined): number | undefined {
+export function startOfDayMs(
+  dateLike: Date | string | number | undefined,
+): number | undefined {
   const d = toLocalDate(dateLike);
   if (!d) return undefined;
   d.setHours(0, 0, 0, 0);
   return d.getTime();
 }
 
-export function endOfDayMs(dateLike: Date | string | number | undefined): number | undefined {
+export function endOfDayMs(
+  dateLike: Date | string | number | undefined,
+): number | undefined {
   const d = toLocalDate(dateLike);
   if (!d) return undefined;
   d.setHours(23, 59, 59, 999);
   return d.getTime();
 }
 
-export function parseDate(
-  value: string,
-  format: string
-): Date | null {
+export function parseDate(value: string, format: string): Date | null {
   if (!value || !format) return null;
 
   const tokenPatterns: Record<string, string> = {
@@ -84,10 +92,7 @@ export function parseDate(
   let regexString = format;
 
   Object.keys(tokenPatterns).forEach((token) => {
-    regexString = regexString.replace(
-      token,
-      tokenPatterns[token]
-    );
+    regexString = regexString.replace(token, tokenPatterns[token]);
   });
 
   const regex = new RegExp(`^${regexString}$`);
@@ -95,13 +100,9 @@ export function parseDate(
 
   if (!match || !match.groups) return null;
 
-  const day = match.groups.day
-    ? parseInt(match.groups.day, 10)
-    : 1;
+  const day = match.groups.day ? parseInt(match.groups.day, 10) : 1;
 
-  const month = match.groups.month
-    ? parseInt(match.groups.month, 10) - 1
-    : 0;
+  const month = match.groups.month ? parseInt(match.groups.month, 10) - 1 : 0;
 
   let year = 0;
 

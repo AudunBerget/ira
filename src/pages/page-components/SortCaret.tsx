@@ -1,6 +1,9 @@
-import {CaretUpDownFilledDownIcon, CaretUpDownFilledUpIcon, CaretUpDownIcon} from "@navikt/aksel-icons";
-import {SortOrder} from "../../types/Sort.ts";
-
+import {
+  CaretUpDownFilledDownIcon,
+  CaretUpDownFilledUpIcon,
+  CaretUpDownIcon,
+} from "@navikt/aksel-icons";
+import { SortOrder } from "../../types/Sort.ts";
 
 type SortCaretProps = {
   order: SortOrder;
@@ -9,10 +12,16 @@ type SortCaretProps = {
   active: boolean;
   label?: string;
   labelClassName?: string;
-}
+};
 
-const SortCaret = ({active, order, toggleSort, className, label, labelClassName}: SortCaretProps) => {
-
+const SortCaret = ({
+  active,
+  order,
+  toggleSort,
+  className,
+  label,
+  labelClassName,
+}: SortCaretProps) => {
   const aria = (order: SortOrder) => {
     switch (order) {
       case "ASC":
@@ -22,30 +31,38 @@ const SortCaret = ({active, order, toggleSort, className, label, labelClassName}
       case "NONE":
         return "Ingen sortering";
     }
-  }
+  };
 
   const icon = () => {
     if (active) {
       if (order === SortOrder.ASC) {
-        return <CaretUpDownFilledUpIcon aria-label="Sortert stigende"/>
+        return <CaretUpDownFilledUpIcon aria-label="Sortert stigende" />;
       } else if (order === SortOrder.DESC) {
-        return <CaretUpDownFilledDownIcon aria-label="Sortert synkende"/>
+        return <CaretUpDownFilledDownIcon aria-label="Sortert synkende" />;
       }
     }
-    return <CaretUpDownIcon aria-label="Ikke sortert" />
-  }
+    return <CaretUpDownIcon aria-label="Ikke sortert" />;
+  };
 
   return (
     <button
       type="button"
       aria-label={aria(order)}
       onClick={toggleSort}
-      className={'sort-caret-button' + (className ? ` ${className}` : '')}>
-      {label ? <span className={'sort-caret-label' + (labelClassName ? ` ${labelClassName}` : '')}>{label}</span> : null}
+      className={"sort-caret-button" + (className ? ` ${className}` : "")}
+    >
+      {label ? (
+        <span
+          className={
+            "sort-caret-label" + (labelClassName ? ` ${labelClassName}` : "")
+          }
+        >
+          {label}
+        </span>
+      ) : null}
       {icon()}
     </button>
-  )
-}
-
+  );
+};
 
 export default SortCaret;

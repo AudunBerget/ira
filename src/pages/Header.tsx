@@ -1,98 +1,97 @@
-import {Link as DSLink} from '@digdir/designsystemet-react';
-import {MenuHamburgerIcon, XMarkIcon} from '@navikt/aksel-icons';
-import styled from '@emotion/styled';
-import {Outlet, useLocation, Link as RouterLink} from "react-router-dom";
-import {breakpoints} from "../utils/Variables.ts";
-import {type ReactNode, useRef, useState} from "react";
-import {useClickOutside} from "../hooks/useClickOutside.ts";
-import iraLogo from "@/assets/iralogocrop.png"
+import { Link as DSLink } from "@digdir/designsystemet-react";
+import { MenuHamburgerIcon, XMarkIcon } from "@navikt/aksel-icons";
+import styled from "@emotion/styled";
+import { Outlet, useLocation, Link as RouterLink } from "react-router-dom";
+import { breakpoints } from "../utils/Variables.ts";
+import { type ReactNode, useRef, useState } from "react";
+import { useClickOutside } from "../hooks/useClickOutside.ts";
+import iraLogo from "@/assets/iralogocrop.png";
 
-const ComponentHeaderWrapper = styled('header')(() => ({
-  display: 'flex',
-  color: 'var(--ira-red-color)',
-  backgroundColor: '#FFFFFF',
-  borderBottom: '1px solid var(--border)',
-}))
+const ComponentHeaderWrapper = styled("header")(() => ({
+  display: "flex",
+  color: "var(--ira-red-color)",
+  backgroundColor: "#FFFFFF",
+  borderBottom: "1px solid var(--border)",
+}));
 
-const ComponentDesktopHeaderItem = styled('div')(() => ({
+const ComponentDesktopHeaderItem = styled("div")(() => ({
   [breakpoints.minWid768]: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
-  display: 'none',
-  gap: '0.5rem',
-  fontSize: '1rem',
+  display: "none",
+  gap: "0.5rem",
+  fontSize: "1rem",
   flex: 1,
-}))
+}));
 
-const ComponentHeaderItem = styled('div')({
-  display: 'inline-flex',
-  fontSize: 'var(--ds-heading-lg-font-size)',
-  gap: '1rem',
-  padding: '1rem',
+const ComponentHeaderItem = styled("div")({
+  display: "inline-flex",
+  fontSize: "var(--ds-heading-lg-font-size)",
+  gap: "1rem",
+  padding: "1rem",
 
-  '& img': {
-    width: '8rem',
-    height: 'auto',
-    objectFit: 'contain',
-  }
-})
-
-const ComponentMobileMenuWrapper = styled('div')({
-  [breakpoints.minWid768]: {
-    display: 'none',
+  "& img": {
+    width: "8rem",
+    height: "auto",
+    objectFit: "contain",
   },
-  display: 'flex',
-  flex: '1',
-  marginRight: '1rem',
-  justifyContent: 'flex-end',
-  fontSize: '3rem',
+});
+
+const ComponentMobileMenuWrapper = styled("div")({
+  [breakpoints.minWid768]: {
+    display: "none",
+  },
+  display: "flex",
+  flex: "1",
+  marginRight: "1rem",
+  justifyContent: "flex-end",
+  fontSize: "3rem",
 
   button: {
-    fontSize: '3rem',
-    color: 'var(--ira-red-color)',
-  }
-})
+    fontSize: "3rem",
+    color: "var(--ira-red-color)",
+  },
+});
 
-const ComponentMobileMenu = styled('div')({
+const ComponentMobileMenu = styled("div")({
   [breakpoints.minWid768]: {
-    display: 'none',
+    display: "none",
   },
 
-  position: 'absolute',
+  position: "absolute",
   zIndex: 5,
-  backgroundColor: '#fff',
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '1rem',
-  fontSize: '2rem',
-})
+  backgroundColor: "#fff",
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  gap: "1rem",
+  fontSize: "2rem",
+});
 
-const ComponentHeaderLogo = styled('img')({
+const ComponentHeaderLogo = styled("img")({
   [breakpoints.minWid768]: {
-    width: '200px',
+    width: "200px",
   },
 
-  width: '100px',
-  height: 'auto',
-})
-
+  width: "100px",
+  height: "auto",
+});
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const location = useLocation();
   const activeLink = (path: string) => {
-    return location.pathname === path ? 'header-link-active' : 'header-link';
-  }
+    return location.pathname === path ? "header-link-active" : "header-link";
+  };
 
   type PopUpProps = {
     onClose: () => void;
     children: ReactNode[] | ReactNode | null;
-  }
-  function Popup({ onClose, children}: PopUpProps) {
+  };
+  function Popup({ onClose, children }: PopUpProps) {
     const ref = useRef<HTMLDivElement>(null);
 
     useClickOutside(ref, onClose);
@@ -104,40 +103,68 @@ export const Header = () => {
     <>
       <ComponentHeaderWrapper>
         <ComponentHeaderItem>
-          <ComponentHeaderLogo src={iraLogo} alt='IRA Logo' />
+          <ComponentHeaderLogo src={iraLogo} alt="IRA Logo" />
         </ComponentHeaderItem>
-        <ComponentDesktopHeaderItem className='header-desktop'>
-          <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
-          <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
-          <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>
+        <ComponentDesktopHeaderItem className="header-desktop">
+          <RouterLink className={activeLink("/")} to="/">
+            Statistikk
+          </RouterLink>
+          <RouterLink className={activeLink("/spor")} to="/spor">
+            Spor
+          </RouterLink>
+          <RouterLink className={activeLink("/moter")} to="/moter">
+            Møter
+          </RouterLink>
         </ComponentDesktopHeaderItem>
         <ComponentMobileMenuWrapper>
           <button
-            className={'sort-caret-button'}
-            onClick={() => {setIsMenuOpen(!isMenuOpen)}}
+            className={"sort-caret-button"}
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+            }}
           >
             {isMenuOpen ? <XMarkIcon /> : <MenuHamburgerIcon />}
           </button>
         </ComponentMobileMenuWrapper>
-      {/* todo Lightmode / darkmode? */}
+        {/* todo Lightmode / darkmode? */}
       </ComponentHeaderWrapper>
-      {isMenuOpen &&
+      {isMenuOpen && (
         <Popup onClose={() => setIsMenuOpen(false)}>
-          <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
-            <RouterLink className={activeLink('/spor')} to='/spor'>Spor</RouterLink>
+          <DSLink
+            asChild
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+            }}
+          >
+            <RouterLink className={activeLink("")} to="/">
+              Statistikk
+            </RouterLink>
           </DSLink>
-          <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
-            <RouterLink className={activeLink('/moter')} to='/moter'>Møter</RouterLink>
+          <DSLink
+            asChild
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+            }}
+          >
+            <RouterLink className={activeLink("/spor")} to="/spor">
+              Spor
+            </RouterLink>
           </DSLink>
-          <DSLink asChild onClick={() => {setIsMenuOpen(!isMenuOpen)}}>
-            <RouterLink className={activeLink('/stats')} to='/stats'>Statistikk</RouterLink>
+          <DSLink
+            asChild
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+            }}
+          >
+            <RouterLink className={activeLink("/moter")} to="/moter">
+              Møter
+            </RouterLink>
           </DSLink>
         </Popup>
-      }
+      )}
       <main>
         <Outlet />
       </main>
     </>
-  )
+  );
 };
-

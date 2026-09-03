@@ -4,7 +4,6 @@ declare global {
   }
 }
 
-
 // Only works for bands, make it work for artists such as "Young, Neil" to "Neil Young", but
 // not for "Young, Neil & The Band"
 
@@ -23,30 +22,30 @@ export function normalizeTheArtist(name: string): string {
 
   // do featuring check
   const featMatch = name.match(/\b(?:feat\.?|featuring)\b/i);
-  let mainName = name.trim()
+  let mainName = name.trim();
   let featSuffix = "";
 
   if (featMatch?.index !== undefined) {
     mainName = name.slice(0, featMatch.index).trim();
-    featSuffix = name.slice(featMatch.index).trim()
+    featSuffix = name.slice(featMatch.index).trim();
   }
 
-  const parts = mainName.split(",").map(p => p.trim());
+  const parts = mainName.split(",").map((p) => p.trim());
 
   // Only transform if exactly two parts and if the second part is "THE" (case-insensitive)
   let normalizedMain = mainName;
-  if (parts.length === 2 && parts[1].trim().toUpperCase() === 'THE') {
+  if (parts.length === 2 && parts[1].trim().toUpperCase() === "THE") {
     normalizedMain = `${parts[1]} ${parts[0]}`;
-  // } else if (parts.length === 2) {
+    // } else if (parts.length === 2) {
     // normalizedMain = `${parts[1]} ${parts[0]}`;
-  // }
-  // } else if (parts.length === 2) {
-  //   return `${parts[1]} ${parts[0]}`;
+    // }
+    // } else if (parts.length === 2) {
+    //   return `${parts[1]} ${parts[0]}`;
   }
 
   return featSuffix ? `${normalizedMain} ${featSuffix}`.trim() : normalizedMain;
 }
 
 String.prototype.reverse = function (): string {
-  return this.split('').reverse().join('');
-}
+  return this.split("").reverse().join("");
+};

@@ -2,8 +2,8 @@ name: Sync IRAComplete.xls from Google Drive
 
 on:
   schedule:
-    - cron: '0 6 10 * *'  # 6am UTC on the 10th of every month
-  workflow_dispatch:        # allows manual trigger from the Actions tab
+    - cron: "0 6 5,10,15,20,25 * *" # 6am UTC on the 10th of every month
+  workflow_dispatch: # allows manual trigger from the Actions tab
 
 permissions:
   contents: write
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: pip install google-auth google-api-python-client

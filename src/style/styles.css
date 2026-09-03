@@ -35,18 +35,19 @@ main {
   margin: 0 auto;
 }
 
-.header-link, .header-link-active {
+.header-link,
+.header-link-active {
   text-decoration: none;
   color: var(--muted-grey);
   padding: 0.25rem 0.75rem;
-  border-radius: 0.40rem;
+  border-radius: 0.4rem;
 }
 
 .header-link-active {
   text-decoration: none;
   color: var(--ira-red-color);
   background-color: var(--ira-red-color-200);
-  border-radius: 0.40rem;
+  border-radius: 0.4rem;
 }
 
 .header-link:hover {
@@ -95,6 +96,11 @@ main {
   cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--ira-red-color);
 }

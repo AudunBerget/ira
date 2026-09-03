@@ -92,7 +92,8 @@
   width: 100%;
 }
 
-.song-date-picker-to, .song-date-picker-from {
+.song-date-picker-to,
+.song-date-picker-from {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -102,7 +103,7 @@
     border: 1px solid var(--border);
     background-color: var(--surface-grey);
     border-radius: 0.2rem;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
   }
 }
 
@@ -118,7 +119,10 @@
 }
 
 /* ── Member multi-select dropdown ───────────────────── */
-.member-select { position: relative; width: 100%; }
+.member-select {
+  position: relative;
+  width: 100%;
+}
 
 .member-select-trigger {
   width: 100%;
@@ -135,14 +139,20 @@
   transition: border-color 0.15s;
 }
 
-.member-select-trigger:hover { border-color: var(--muted-grey); }
+.member-select-trigger:hover {
+  border-color: var(--muted-grey);
+}
 
 .member-select-trigger.has-selection {
   border-color: var(--text-dark);
   color: var(--text-dark);
 }
 
-.member-select-arrow { font-size: 9px; color: var(--muted-grey); flex-shrink: 0; }
+.member-select-arrow {
+  font-size: 9px;
+  color: var(--muted-grey);
+  flex-shrink: 0;
+}
 
 .member-select-dropdown {
   position: absolute;
@@ -170,7 +180,9 @@
   user-select: none;
 }
 
-.member-select-option:hover { background: var(--surface-grey); }
+.member-select-option:hover {
+  background: var(--surface-grey);
+}
 
 .member-select-option input[type="checkbox"] {
   width: 14px;
@@ -195,4 +207,6 @@
   transition: color 0.15s;
 }
 
-.member-select-clear:hover { color: var(--text-dark); }
+.member-select-clear:hover {
+  color: var(--text-dark);
+}
