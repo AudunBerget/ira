@@ -1,19 +1,12 @@
 import styled from '@emotion/styled';
 import { StyledBigStatsCardTitle } from '../page-components/BigStatsCard.tsx';
+import { Wrapper } from './MostPlayedArtists.tsx';
 import type { Track } from '../../types.ts';
 import { useMemo } from 'react';
 
-interface MostPlayedArtistsProps {
+interface MostPlayedSongsProps {
   tracks: Track[];
 }
-
-// todo generic stats wrapper?
-export const Wrapper = styled('div')({
-  border: '1px solid var(--border)',
-  borderRadius: 15,
-  backgroundColor: 'var(--surface-white)',
-  padding: '1rem'
-});
 
 const List = styled('div')({
   overflow: 'auto',
@@ -40,36 +33,36 @@ const ArtistItem = styled('span')({
   color: 'var(--text-dark)',
 })
 
-const mostPlayedArtists = (tracks: Track[]): {artist: string, totalSongs: number }[] => {
-  const counts = new Map<string, { display: string; count: number }>()
+const mostPlayedSongs = (tracks: Track[]): { artist: string, title: string, totalPlays: number }[] => {
+  const counts = new Map<string, { display: string; title: string; count: number }>();
   for (const track of tracks) {
-    const entry = counts.get(track.artistRaw)
+    const key = `${track.artistRaw}+${track.title}`;
+    const entry = counts.get(key)
     if (entry) {
       entry.count++
     } else {
-      counts.set(track.artistRaw, { display: track.artist, count: 1 })
+      counts.set(key, { display: track.artist, title: track.title, count: 1})
     }
   }
   return [...counts.values()]
-    .map(({ display, count }) => ({ artist: display, totalSongs: count }))
-    .sort((a, b) => b.totalSongs - a.totalSongs)
-    .filter(o => o.totalSongs > 15)
+    .map(({ display, title, count }) => ({ artist: display, title: title, totalPlays: count }))
+    .sort((a, b) => b.totalPlays - a.totalPlays)
+    .filter(o => o.totalPlays > 2)
 }
 
-const MostPlayedArtists = ({ tracks }: MostPlayedArtistsProps) => {
-  const stats = useMemo(() => mostPlayedArtists(tracks), [tracks]);
-
+const MostPlayedSongs = ({ tracks }: MostPlayedSongsProps) => {
+  const stats = useMemo(() => mostPlayedSongs(tracks), [tracks]);
   return (
     <Wrapper>
-      <StyledBigStatsCardTitle>Mest spilte artister</StyledBigStatsCardTitle>
+      <StyledBigStatsCardTitle>Mest spilte sanger</StyledBigStatsCardTitle>
       <List>
         {stats.map((song, index) => (
           <ListItem>
             <ArtistWrapper>
               <span>#{index + 1}</span>
-              <ArtistItem>{song.artist}</ArtistItem>
+              <ArtistItem>{song.artist} - {song.title}</ArtistItem>
             </ArtistWrapper>
-            <span>{song.totalSongs}x</span>
+            <span>{song.totalPlays}x</span>
           </ListItem>
         ))}
       </List>
@@ -77,4 +70,4 @@ const MostPlayedArtists = ({ tracks }: MostPlayedArtistsProps) => {
   );
 };
 
-export default MostPlayedArtists;
+export default MostPlayedSongs;

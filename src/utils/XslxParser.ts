@@ -2,6 +2,8 @@ import * as XLSX from 'xlsx';
 import type { Track } from '../types.ts';
 import { formatDateKey } from './DateUtils.ts';
 
+// TODO fikse artist string presentasjon ved forskjellige varianter som "feat." "Nesbø, Jo", etc.
+
 function toDisplayArtist(raw: string): string {
   if (!raw.includes('&') || !raw.includes('feat.') || !raw.includes('feat')) {
     const parts = raw.split(',')

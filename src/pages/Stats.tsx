@@ -5,6 +5,8 @@ import { groupSongsByDate } from '../utils/DataUtils.ts';
 import { useMemo } from 'react';
 import { SongsByYearChart } from './stats/SongsByYearChart.tsx';
 import MostPlayedArtists from './stats/MostPlayedArtists.tsx';
+import MostPlayedSongs from './stats/MostPlayedSongs.tsx';
+import UniqueSongsPerOwnerChart from './stats/UniqueSongsPerOwnerChart.tsx';
 
 type StatsProps = {
   data: Track[];
@@ -25,6 +27,7 @@ const TwoChartsWrapper = styled('div')(() => ({
   gridTemplateColumns: 'repeat(2, 1fr)',
   gap: '1rem',
   marginTop: '1.5rem',
+  marginBottom: '1.5rem',
 }));
 
 const Stats = ({ data }: StatsProps) => {
@@ -38,22 +41,6 @@ const Stats = ({ data }: StatsProps) => {
   const firstMeetYear = firstMeet ? Number(firstMeet.slice(-4)) : 0;
   const lastMeetYear = lastMeet ? Number(lastMeet.slice(-4)) : 0;
   const yearsActive = (lastMeetYear - firstMeetYear) + 1;
-
-  function songsByArtist(tracks: Track[]): { artist: string; totalSongs: number }[] {
-    const counts = new Map<string, { display: string; count: number }>()
-    for (const track of tracks) {
-      const entry = counts.get(track.artistRaw)
-      if (entry) {
-        entry.count++
-      } else {
-        counts.set(track.artistRaw, { display: track.artist, count: 1 })
-      }
-    }
-    return [...counts.values()]
-      .map(({ display, count }) => ({ artist: display, totalSongs: count }))
-      .sort((a, b) => b.totalSongs - a.totalSongs)
-      .filter(o => o.totalSongs > 15)
-  }
 
   return (
     <div className="stats-wrapper">
@@ -84,9 +71,11 @@ const Stats = ({ data }: StatsProps) => {
       </StyledBigStatsWrapper>
       <SongsByYearChart tracks={data} />
       <TwoChartsWrapper>
-        <MostPlayedArtists stats={songsByArtist(data)} />
-        <MostPlayedArtists stats={songsByArtist(data)} />
+        {/* todo Refactor ovenfor for å kunne definere antall gridplasser */}
+        <MostPlayedArtists tracks={data} />
+        <MostPlayedSongs tracks={data} />
       </TwoChartsWrapper>
+      <UniqueSongsPerOwnerChart tracks={data} />
     </div>
   );
 };

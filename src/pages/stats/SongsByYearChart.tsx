@@ -19,15 +19,16 @@ function songsByYear(tracks: Track[]): { year: string; count: number }[] {
 
 // ─── Styled wrapper ───────────────────────────────────────────────────────────
 
-const Wrapper = styled.div`
+export const FullGridWidthWrapper = styled.div`
     background: var(--surface-white);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 24px 28px 16px;
     font-family: 'Inter', system-ui, sans-serif;
+    margin-bottom: 1.5rem;
 `;
 
-const Header = styled.div`
+export const FullGridHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -36,7 +37,7 @@ const Header = styled.div`
 
 // ─── Custom tooltip ───────────────────────────────────────────────────────────
 
-const TooltipBox = styled.div`
+export const TooltipBox = styled.div`
     background: var(--surface-white);
     border: 1px solid var(--muted-grey);
     border-radius: 8px;
@@ -50,7 +51,7 @@ const TooltipBox = styled.div`
     pointer-events: none;
 `;
 
-const TooltipYear = styled.span`
+export const TooltipYear = styled.span`
     font-weight: 600;
     margin-right: 4px;
     color: var(--ira-red-color);
@@ -81,10 +82,10 @@ export function SongsByYearChart({ tracks }: SongsByYearChartProps) {
   const data = useMemo(() => songsByYear(tracks), [tracks]);
 
   return (
-    <Wrapper>
-      <Header>
+    <FullGridWidthWrapper>
+      <FullGridHeader>
         <StyledBigStatsCardTitle>Sanger per år</StyledBigStatsCardTitle>
-      </Header>
+      </FullGridHeader>
       <ResponsiveContainer width="100%" height={180}>
         <BarChart data={data} margin={{ top: 4, right: 8, bottom: 4, left: -20 }}>
           <XAxis
@@ -109,6 +110,6 @@ export function SongsByYearChart({ tracks }: SongsByYearChartProps) {
           <Bar dataKey="count" fill="var(--ira-red-color)" radius={[3, 3, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
-    </Wrapper>
+    </FullGridWidthWrapper>
   );
 }
