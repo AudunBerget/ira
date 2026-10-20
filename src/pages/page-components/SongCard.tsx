@@ -3,6 +3,7 @@ import { normalizeTheArtist } from "../../utils/StringUtils.ts";
 import styled from "@emotion/styled";
 import { breakpoints } from "../../utils/Variables.ts";
 import type { Track } from '../../types.ts';
+import { ownerColor } from '../../utils/OWNER_COLORS.ts';
 
 type SongCardProps = {
   song: Track;
@@ -12,24 +13,22 @@ const ComponentSongCard = styled("div")({
   [breakpoints.minWid768]: {
     display: "grid",
     padding: "0.5rem",
-    gridTemplateColumns: "0.3fr 1fr 1fr 0.3fr",
+    gridTemplateColumns: "1fr 1fr 0.3fr 0.3fr",
     gridTemplateRows: "1fr",
-    ":nth-of-type(even)": {
-      backgroundColor:
-        "color-mix(in srgb, var(--ira-red-color-800), transparent)",
-    },
     marginBottom: "0",
   },
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr",
   gridTemplateRows: "1fr 1fr 1fr",
   marginBottom: "0.5rem",
-  border: "1px solid var(--ira-red-color)",
+  borderBottom: "1px solid var(--muted-grey)",
+  color: "var(--text-dark)",
+  fontSize: "0.8rem",
 });
 
 const ComponentSongCardDate = styled("div")({
   [breakpoints.minWid768]: {
-    gridColumn: "1",
+    gridColumn: "3",
     gridRow: "1",
     padding: "0",
   },
@@ -38,6 +37,7 @@ const ComponentSongCardDate = styled("div")({
     color: "var(--ds-color-accent-background-default)",
     textAlign: "right",
   },
+
   gridColumnStart: "3",
   gridColumnEnd: "4",
   gridRow: "1",
@@ -47,7 +47,7 @@ const ComponentSongCardDate = styled("div")({
 
 const ComponentSongCardArtist = styled("div")({
   [breakpoints.minWid768]: {
-    gridColumn: "2",
+    gridColumn: "1",
     gridRow: "1",
     padding: "0",
     fontWeight: "normal",
@@ -66,7 +66,7 @@ const ComponentSongCardArtist = styled("div")({
 
 const ComponentSongCardTitle = styled("div")({
   [breakpoints.minWid768]: {
-    gridColumn: "3",
+    gridColumn: "2",
     gridRow: "1",
     padding: "0",
   },
@@ -91,15 +91,30 @@ const ComponentSongCardPlayedBy = styled("div")({
   alignContent: "center",
 });
 
+const Dot = ({ color = "var(--ira-grey-color)", size = 12 }) => (
+  <svg width={size} height={size} viewBox="0 0 10 10" aria-hidden="true">
+    <circle cx="5" cy="5" r="5" fill={color} />
+  </svg>
+);
+
 const SongCard = ({ song }: SongCardProps) => {
   return (
     <ComponentSongCard>
-      <ComponentSongCardDate>{formatDate(song.date)}</ComponentSongCardDate>
+      <ComponentSongCardDate>{formatDate(song.date, "DD.MM.YYYY")}</ComponentSongCardDate>
       <ComponentSongCardArtist>
         {normalizeTheArtist(song.artist)}
       </ComponentSongCardArtist>
       <ComponentSongCardTitle>{song.title.toString()}</ComponentSongCardTitle>
-      <ComponentSongCardPlayedBy>{song.owner}</ComponentSongCardPlayedBy>
+      <ComponentSongCardPlayedBy>
+        <div style={{
+          color: ownerColor(song.owner),
+          display: "flex",
+          alignItems: "center",
+        }}>
+          <Dot size={12} color={ownerColor(song.owner)} />
+          <span style={{marginLeft: '0.3rem'}}>{song.owner}</span>
+        </div>
+      </ComponentSongCardPlayedBy>
     </ComponentSongCard>
   );
 };

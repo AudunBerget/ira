@@ -15,7 +15,6 @@
 
 .song-sort-caret {
   font-size: 2rem;
-  color: var(--ds-color-accent-background-default);
 }
 
 .song-controls {
@@ -63,16 +62,21 @@
 .songs-played {
   display: flex;
   flex-direction: row-reverse;
-  color: var(--ira-red-color);
+  color: var(--muted-grey);
+  font-size: 0.8rem;
 }
 
 .song-reset-button {
-  color: var(--ira-red-color);
+  color: var(--muted-grey);
   display: flex;
-  gap: 0.5rem;
+  gap: 0.3rem;
   svg {
-    font-size: 1.5rem;
+    font-size: 0.8rem;
   }
+}
+
+.song-reset-caret-label {
+  font-size: 0.8rem;
 }
 
 .dropdown-form {

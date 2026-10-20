@@ -63,16 +63,16 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
 
   const headers: HeaderData[] = [
     {
-      displayName: "Dato",
-      keyName: "date",
-    },
-    {
       displayName: "Artist",
       keyName: "artist",
     },
     {
       displayName: "Tittel",
       keyName: "title",
+    },
+    {
+      displayName: "Dato",
+      keyName: "date",
     },
     {
       displayName: "Spilt av",
@@ -304,12 +304,12 @@ const Songs = ({ data, songsPerPage = 50, showPages = 7 }: SongProps) => {
                   className={"sort-caret-button song-reset-button"}
                 >
                   <ArrowCirclepathReverseIcon />
-                  <span className={"sort-caret-label"}>Nullstill søk</span>
+                  <span className={"song-reset-caret-label"}>Nullstill søk</span>
                 </button>
               </div>
             ) : null}
             <div className="songs-played">
-              {filteredSongs.length} av {data.length} låter
+              {filteredSongs.length} sanger
             </div>
           </div>
         </ComponentSongCardDetailsWrapper>

@@ -3,7 +3,7 @@ import { FullGridHeader, FullGridWidthWrapper, TooltipBox } from './SongsByYearC
 import { StyledCardTitle } from '../page-components/BigStatsCard.tsx';
 import { Bar, BarChart, Rectangle, type RectangleProps, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useMemo } from 'react';
-import { ownerColors } from '../../utils/OwnerColors.ts';
+import { OWNER_COLORS } from '../../utils/OWNER_COLORS.ts';
 import styled from '@emotion/styled';
 
 type StatRow = { owner: string; count: number };
@@ -45,7 +45,7 @@ const ColoredCursor = ({ payload, x, y, width, height }: ColoredCursorProps) => 
       y={y}
       width={width}
       height={height}
-      fill={owner ? ownerColors[owner] : "var(--ira-grey-color)"}
+      fill={owner ? OWNER_COLORS[owner] : "var(--ira-grey-color)"}
       fillOpacity={0.15}
     />
   );
@@ -103,7 +103,7 @@ function UniqueSongsPerOwnerChart({ tracks }: UniqueSongsPerOwnerChartProps) {
             shape={(props) => (
               <Rectangle
                 {...props}
-                fill={ownerColors[props.payload.owner] ?? "var(--ira-grey-color)"}
+                fill={OWNER_COLORS[props.payload.owner] ?? "var(--ira-grey-color)"}
               />
             )}
           />

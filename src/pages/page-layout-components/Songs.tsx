@@ -141,14 +141,8 @@ export const ComponentSongCardHeader = styled("div")({
   },
   display: "none",
   padding: "0.5rem",
-  gridTemplateColumns: "0.3fr 1fr 1fr 0.3fr",
-  borderTop: "1px solid var(--ira-red-color)",
-  borderBottom: "1px solid var(--ira-red-color)",
-  borderTopLeftRadius: "0.5rem",
-  borderTopRightRadius: "0.5rem",
-  fontWeight: "bold",
-  backgroundColor: "var(--ira-red-color)",
-  color: "var(--ds-color-accent-background-default)",
+  gridTemplateColumns: "1fr 1fr 0.3fr 0.3fr",
+  borderBottom: "1px solid var(--muted-grey)",
 });
 
 export const ComponentSongCardWrapper = styled("div")({
@@ -161,6 +155,10 @@ export const ComponentSongCardWrapper = styled("div")({
   flex: "1",
   maxHeight: "100vh",
   overflowY: "auto",
+  border: "1px solid var(--border)",
+  borderRadius: 15,
+  backgroundColor: "var(--surface-white)",
+  padding: "1rem",
 });
 
 export const ComponentSongCardDetailsWrapper = styled("div")({

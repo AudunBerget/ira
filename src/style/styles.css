@@ -74,10 +74,17 @@ main {
   cursor: pointer;
   display: flex;
   align-items: center;
+  color: var(--muted-grey);
 }
 
-.sort-caret-label {
-  font-size: 1.25rem;
+.sort-caret-button.song-sort-caret {
+  color: var(--muted-grey);
+  font-size: 1rem;
+}
+
+.sort-caret-button.song-sort-caret-active {
+  color: var(--ira-red-color);
+  font-size: 1rem;
 }
 
 .search-bar-search-icon {

@@ -44,17 +44,19 @@ const SortCaret = ({
     return <CaretUpDownIcon aria-label="Ikke sortert" />;
   };
 
+  const activeClass = () =>  active ? "-active" : "";
+
   return (
     <button
       type="button"
       aria-label={aria(order)}
       onClick={toggleSort}
-      className={"sort-caret-button" + (className ? ` ${className}` : "")}
+      className={"sort-caret-button" + (className ? ` ${className}` : "") + activeClass()}
     >
       {label ? (
         <span
           className={
-            "sort-caret-label" + (labelClassName ? ` ${labelClassName}` : "")
+            "sort-caret-label" + (labelClassName ? ` ${labelClassName}` : "" + activeClass())
           }
         >
           {label}
