@@ -32,7 +32,7 @@ function App() {
         <Route path={''} element={<Stats data={tracks} topN={20} />} />
         <Route path="omoss" />
         <Route path="moter" element={<Meets tracks={tracks} />} />
-        <Route path="spor" element={<Songs data={tracks} />} />
+        <Route path="musikk" element={<Songs data={tracks} />} />
         {/*<Route path='stats' element={} />*/}
       </Route>
     </Routes>

@@ -7,7 +7,7 @@ type BigStatsCardProps = {
   statColor?: string;
 };
 
-export const StyledBigStatsCard = styled("div")({
+export const StyledCard = styled("div")({
   border: "1px solid var(--border)",
   borderRadius: 15,
   backgroundColor: "var(--surface-white)",
@@ -15,8 +15,7 @@ export const StyledBigStatsCard = styled("div")({
   padding: "1rem",
 });
 
-// todo generic?
-export const StyledBigStatsCardTitle = styled("div")({
+export const StyledCardTitle = styled("div")({
   color: "var(--muted-grey)",
   textTransform: "uppercase",
   letterSpacing: "0.6px",
@@ -48,10 +47,10 @@ export default function BigStatsCard({
   statColor,
 }: BigStatsCardProps) {
   return (
-    <StyledBigStatsCard>
-      <StyledBigStatsCardTitle>{title}</StyledBigStatsCardTitle>
+    <StyledCard>
+      <StyledCardTitle>{title}</StyledCardTitle>
       <StyledBigStatsCardStat color={statColor}>{stat.toLocaleString()}</StyledBigStatsCardStat>
       <StyledBigStatsCardDescription>{statNote}</StyledBigStatsCardDescription>
-    </StyledBigStatsCard>
+    </StyledCard>
   );
 }

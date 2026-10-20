@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import styled from '@emotion/styled';
 import type { Track } from '../../types.ts';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { StyledBigStatsCardTitle } from '../page-components/BigStatsCard.tsx';
+import { StyledCardTitle } from '../page-components/BigStatsCard.tsx';
 
 // ─── Data transform ──────────────────────────────────────────────────────────
 
@@ -84,7 +84,7 @@ export function SongsByYearChart({ tracks }: SongsByYearChartProps) {
   return (
     <FullGridWidthWrapper>
       <FullGridHeader>
-        <StyledBigStatsCardTitle>Sanger per år</StyledBigStatsCardTitle>
+        <StyledCardTitle>Sanger per år</StyledCardTitle>
       </FullGridHeader>
       <ResponsiveContainer width="100%" height={180}>
         <BarChart data={data} margin={{ top: 4, right: 8, bottom: 4, left: -20 }}>

@@ -109,8 +109,8 @@ export const Header = () => {
           <RouterLink className={activeLink("/")} to="/">
             Oversikt
           </RouterLink>
-          <RouterLink className={activeLink("/spor")} to="/spor">
-            Spor
+          <RouterLink className={activeLink("/musikk")} to="/musikk">
+            Musikk
           </RouterLink>
           <RouterLink className={activeLink("/moter")} to="/moter">
             Møter
@@ -146,8 +146,8 @@ export const Header = () => {
               setIsMenuOpen(!isMenuOpen);
             }}
           >
-            <RouterLink className={activeLink("/spor")} to="/spor">
-              Spor
+            <RouterLink className={activeLink("/musikk")} to="/musikk">
+              Musikk
             </RouterLink>
           </DSLink>
           <DSLink

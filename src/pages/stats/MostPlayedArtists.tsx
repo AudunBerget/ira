@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { StyledBigStatsCardTitle } from '../page-components/BigStatsCard.tsx';
+import { StyledCardTitle } from '../page-components/BigStatsCard.tsx';
 import type { Track } from '../../types.ts';
 import { useMemo } from 'react';
 
@@ -61,7 +61,7 @@ const MostPlayedArtists = ({ tracks }: MostPlayedArtistsProps) => {
 
   return (
     <Wrapper>
-      <StyledBigStatsCardTitle>Mest spilte artister</StyledBigStatsCardTitle>
+      <StyledCardTitle>Mest spilte artister</StyledCardTitle>
       <List>
         {stats.map((song, index) => (
           <ListItem>

@@ -1,6 +1,6 @@
 import type { Track } from '../../types.ts';
 import { FullGridHeader, FullGridWidthWrapper, TooltipBox } from './SongsByYearChart.tsx';
-import { StyledBigStatsCardTitle } from '../page-components/BigStatsCard.tsx';
+import { StyledCardTitle } from '../page-components/BigStatsCard.tsx';
 import { Bar, BarChart, Rectangle, type RectangleProps, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useMemo } from 'react';
 import { ownerColors } from '../../utils/OwnerColors.ts';
@@ -76,7 +76,7 @@ function UniqueSongsPerOwnerChart({ tracks }: UniqueSongsPerOwnerChartProps) {
   return (
     <FullGridWidthWrapper>
       <FullGridHeader>
-        <StyledBigStatsCardTitle>Unike sanger per medlem</StyledBigStatsCardTitle>
+        <StyledCardTitle>Unike sanger per medlem</StyledCardTitle>
       </FullGridHeader>
       <ResponsiveContainer width="100%" height={180}>
         <BarChart data={stats} margin={{ top: 4, right: 8, bottom: 4, left: -20 }}>
