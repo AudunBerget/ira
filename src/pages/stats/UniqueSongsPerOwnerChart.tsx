@@ -1,10 +1,16 @@
 import type { Track } from '../../types.ts';
 import { FullGridHeader, FullGridWidthWrapper, TooltipBox } from './SongsByYearChart.tsx';
 import { StyledBigStatsCardTitle } from '../page-components/BigStatsCard.tsx';
-import { Bar, BarChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, Rectangle, type RectangleProps, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useMemo } from 'react';
 import { ownerColors } from '../../utils/OwnerColors.ts';
 import styled from '@emotion/styled';
+
+type StatRow = { owner: string; count: number };
+
+type ColoredCursorProps = RectangleProps & {
+  payload?: { payload: StatRow }[];
+};
 
 interface UniqueSongsPerOwnerChartProps {
   tracks: Track[];
@@ -30,6 +36,21 @@ function ChartTooltip({ active, label, payload }: TooltipProps) {
     </TooltipBox>
   );
 }
+
+const ColoredCursor = ({ payload, x, y, width, height }: ColoredCursorProps) => {
+  const owner = payload?.[0]?.payload?.owner;
+  return (
+    <Rectangle
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      fill={owner ? ownerColors[owner] : "var(--ira-grey-color)"}
+      fillOpacity={0.15}
+    />
+  );
+};
+
 
 function uniqueSongsPerOwner(tracks: Track[]): { owner: string; count: number }[] {
   const songsByOwner = new Map<string, Set<string>>();
@@ -72,8 +93,9 @@ function UniqueSongsPerOwnerChart({ tracks }: UniqueSongsPerOwnerChartProps) {
             tickLine={false}
           />
           <Tooltip
+            // todo ToolTip title i egen farge også?
             content={<ChartTooltip />}
-            cursor={{ fill: 'var(--ira-red-color-200)' }}
+            cursor={<ColoredCursor />}
           />
           <Bar
             dataKey="count"
